@@ -1,8 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=main.html">
-  <script>window.location.replace("EaglercraftZ_1.20_Offline_International.html");</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EaglercraftZ 1.20 - Download</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a1a2e;
+      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #16213e;
+      border: 2px solid #0f3460;
+      border-radius: 12px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .icon { font-size: 56px; margin-bottom: 16px; }
+    h1 { font-size: 1.6rem; margin-bottom: 8px; color: #e94560; }
+    p { color: #aaa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px; }
+    .btn {
+      display: inline-block;
+      background: #e94560;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #c73652; }
+    .note {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: #666;
+    }
+    .status {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #4caf50;
+      display: none;
+    }
+  </style>
 </head>
-<body></body>
+<body>
+  <div class="card">
+    <div class="icon">⛏️</div>
+    <h1>EaglercraftZ 1.20</h1>
+    <p>Download the offline HTML file to play Minecraft in your browser — no install needed. Just open the file locally anytime!</p>
+    <button class="btn" onclick="startDownload()">Download EaglercraftZ</button>
+    <div class="status" id="status">✅ Download started!</div>
+    <p class="note">Save the file, then open it in your browser to play.<br>Works fully offline.</p>
+  </div>
+
+  <script>
+    function startDownload() {
+      var a = document.createElement('a');
+      a.href = 'EaglercraftZ_1.20_Offline_International.html';
+      a.download = 'EaglercraftZ_1.20_Offline_International.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      document.getElementById('status').style.display = 'block';
+    }
+
+    window.addEventListener('load', function() {
+      setTimeout(startDownload, 800);
+    });
+  </script>
+</body>
 </html>
