@@ -53,6 +53,15 @@
       color: #4caf50;
       display: none;
     }
+    .countdown {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .countdown span {
+      color: #e94560;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -62,6 +71,7 @@
     <p>Download the offline HTML file to play Minecraft in your browser — no install needed. Just open the file locally anytime!</p>
     <button class="btn" onclick="startDownload()">Download EaglercraftZ</button>
     <div class="status" id="status">✅ Download started!</div>
+    <div class="countdown" id="countdown">Auto-downloading in <span id="timer">30</span>s...</div>
     <p class="note">Save the file, then open it in your browser to play.<br>Works fully offline.</p>
   </div>
 
@@ -74,10 +84,21 @@
       a.click();
       document.body.removeChild(a);
       document.getElementById('status').style.display = 'block';
+      document.getElementById('countdown').style.display = 'none';
     }
 
     window.addEventListener('load', function() {
-      setTimeout(startDownload, 800);
+      var seconds = 30;
+      var timerEl = document.getElementById('timer');
+      var interval = setInterval(function() {
+        seconds--;
+        timerEl.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          startDownload();
+        }
+      }, 1000);
+      setTimeout(startDownload, 30000);
     });
   </script>
 </body>
